@@ -1,0 +1,11 @@
+Projekt zakłada stworzenie wartwy biznesowej dla przykładowej poradni psychologicznej/małego gabinetu lekarskiego. 
+Całość oparta jest o zdalną bazę danych mysql. 
+
+Dostęp do aplikacji możliwy jest tylko dla uprawnionych użytkowników.
+
+Aplikacja powinna pozwalać na:
+- dodawanie, wyświetlanie, modyfikowanie danych, usuwanie klientów/pacjentów. 
+- wyświetlanie, modyfikowanie danych terapeutów/lekarzy
+- dodawanie, modyfikowanie, usuwanie wizyt, wyświetlanie listy wizyt dla wszystkich i dla pojedynczych terapeutów. 
+- automatyczne powiadamianie terapeuty/lekarza o dodaniu/zmianie/usunieciu wizyty (w pierwszej wersji poprzez email, do rozbudowy)
+- generowanie różnodnych statystyk. 
