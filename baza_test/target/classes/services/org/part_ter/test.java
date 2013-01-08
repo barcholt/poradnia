@@ -17,7 +17,8 @@ public class test {
 		else {
 			System.out.println("Połączenie nawiązano");
 			
-		}
+		}		
+		
 		Terapeutka nowa = ter.get(1);
 		System.out.println(nowa.getImie());
 		List<Terapeutka> list = ter.getAll();
