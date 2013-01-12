@@ -18,6 +18,7 @@ public class Wizyta {
 	private int status;
 	private int oplata;
 	private String notka;
+
 	
 	public Wizyta(int id, int id_terap, int id_klient, LocalDate data, String godzina, int ktora,
 			float trwa, int oplata, String notka, int status) {
@@ -32,6 +33,7 @@ public class Wizyta {
 		this.status = status;
 		this.oplata = oplata;
 		this.notka = notka;
+
 	}
 
 	public Wizyta(int id_terap, int id_klient, LocalDate data, String godzina, int ktora,
@@ -136,5 +138,7 @@ public class Wizyta {
 	public Wizyta getWizyta() {
 		return this;
 	}
+
+	
 
 }

@@ -4,11 +4,12 @@ import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
 import org.joda.time.*;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-public class Manager_Wizyta_mysql implements Manager_db<Wizyta> {
+public class Manager_Wizyta_mysql implements Manager_db<Wizyta>, Subject<Wizyta> {
 	private Connection connection;
 	private Statement stmt;
 	private PreparedStatement getWiz;
@@ -23,11 +24,15 @@ public class Manager_Wizyta_mysql implements Manager_db<Wizyta> {
 	private DateTime dt = new DateTime();
 	private DateTime dzis = new DateTime();
 	private String dzisiaj = dzis.toString();
+	private ArrayList observers;
+	private String zmiana;
+	private Wizyta wizyta_zmiana;
 	
 	public Manager_Wizyta_mysql() {
 		Connection_mysql cmp = new Connection_mysql();
 		connection = cmp.connect;
 		stmt = cmp.stmt;
+		observers = new ArrayList();
 	    
 		try {
 			getWiz = connection.prepareStatement("" + "SELECT * FROM `Poradnia_Wizyty` WHERE `id_wizyta` =?");
@@ -187,6 +192,10 @@ public class Manager_Wizyta_mysql implements Manager_db<Wizyta> {
 			change.setFloat(9, wiz.getTrwa());
 			change.setInt(10, id);
 			change.executeUpdate();
+			this.wizyta_zmiana = wiz;
+			this.zmiana = "Informujemy, że w systemie została zmodyfikowana wizyta: ";
+			notifyObservers();
+			
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -200,8 +209,9 @@ public class Manager_Wizyta_mysql implements Manager_db<Wizyta> {
 	}
 	
 	public boolean save(Wizyta wiz, Terapeutka ter, Klient kli) {
-
+		System.out.println("Tworzę");
 		try {
+
 			insert.setInt(1, ter.getId());
 			insert.setInt(2, kli.getId());
 			insert.setString(3, wiz.getData().toString());
@@ -212,6 +222,11 @@ public class Manager_Wizyta_mysql implements Manager_db<Wizyta> {
 			insert.setString(8, wiz.getNotka());
 			insert.setFloat(9, wiz.getTrwa());
 			insert.executeUpdate();
+			this.wizyta_zmiana = wiz;
+			this.zmiana = "Informujemy, że do systemu została dodana wizyta: ";
+			notifyObservers();
+
+			
 			return true;
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -221,16 +236,24 @@ public class Manager_Wizyta_mysql implements Manager_db<Wizyta> {
 	
 	@Override
 	public boolean delete(int id) {
+			return false;
+	}
+
+	public boolean delete(Wizyta wiz) {
 		try {
-			delete.setInt(1, id);
+			delete.setInt(1, wiz.getId());
 			delete.executeUpdate();
+			this.wizyta_zmiana = wiz;
+			this.zmiana = "Informujemy, że z systemu została usunięta następująca wizyta: ";
+			notifyObservers();
 			return true;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
-		}
-		
+		}		
 	}
+	
 	public int GetLastId() {
 
 		int id=0;
@@ -246,4 +269,25 @@ public class Manager_Wizyta_mysql implements Manager_db<Wizyta> {
 		}
 	}
 		
+	@Override
+	public boolean addObservers(ObserverClass obs) {
+		observers.add(obs);
+		return true;
+	}
+
+	@Override
+	public boolean deleteObservers(ObserverClass obs) {
+		observers.remove(obs);
+		return false;
+	}
+
+	@Override
+	public boolean notifyObservers() {
+		for (int i=0; i<observers.size(); i++) {
+			System.out.println("powiadamiam");
+			ObserverClass ob = (ObserverClass)observers.get(i);
+			ob.notify(this.wizyta_zmiana, zmiana);
+		}
+		return false;
+	}
 }

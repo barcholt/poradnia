@@ -94,7 +94,7 @@ public class Manager_Wizyta_Mysql_Test {
 		man.change(id, wizyta2, ter, klient);
 		Wizyta zBazy2 = man.get(id);
 		assertEquals("Nie równe2 ", zBazy2.getData(), wizyta2.getData());
-		man.delete(id);
+		man.delete(wizyta2);
 	}
 	
 	@Test 

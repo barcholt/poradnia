@@ -43,7 +43,7 @@ public class Manager_Terapeutka_mysql implements Manager_db<Terapeutka> {
 			getTer.setInt(1, id);
 			ResultSet rs = getTer.executeQuery();
 			while (rs.next()) {
-				res = new Terapeutka(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(5), rs.getString(4), rs.getInt(14) );
+				res = new Terapeutka(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(14) );
 			}
 			return res;
 		} catch (SQLException e) {
