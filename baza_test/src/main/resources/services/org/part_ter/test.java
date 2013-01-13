@@ -9,8 +9,8 @@ public class test {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Manager_Terapeutka_mysql ter = new Manager_Terapeutka_mysql();
-			Manager_Klient_mysql kli = new Manager_Klient_mysql();
+		ManagerTerapeutkaMysql ter = new ManagerTerapeutkaMysql();
+			ManagerKlientMysql kli = new ManagerKlientMysql();
 		if (ter.getConnection() == null) {
 			System.out.println("Błąd połączenia!");	
 		}

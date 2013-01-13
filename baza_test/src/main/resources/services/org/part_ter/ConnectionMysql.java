@@ -2,7 +2,7 @@ package org.part_ter;
 
 import java.sql.*;
 
-public class Connection_mysql {
+public class ConnectionMysql {
 
 	private String url = "jdbc:mysql://mysql-585316.vipserv.org/barcholt_mpr";
 	private String user = "barcholt_mpr";
@@ -10,7 +10,7 @@ public class Connection_mysql {
 	Connection connect;
 	Statement stmt;
 	
-	public Connection_mysql() {
+	public ConnectionMysql() {
 		getConnect();
 		getStat();
 

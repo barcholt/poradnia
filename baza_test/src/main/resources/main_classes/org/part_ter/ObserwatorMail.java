@@ -27,7 +27,6 @@ public class ObserwatorMail implements ObserverClass {
 	
 	private static void send (String smtpServer, String to, String from, String subject, String body) {
 		try { 
-		 System.out.println("Wysyłam");
 		 Properties prop = System.getProperties();
 		 prop.put("mail.smtp.host", smtpServer);
 		 Session session = Session.getDefaultInstance(prop, null);
@@ -54,8 +53,8 @@ public class ObserwatorMail implements ObserverClass {
 	
 	@Override
 	public void notify(Wizyta wiz, String str) {
-		Manager_Terapeutka_mysql nu = new Manager_Terapeutka_mysql();
-		Manager_Klient_mysql ne = new Manager_Klient_mysql();
+		ManagerTerapeutkaMysql nu = new ManagerTerapeutkaMysql();
+		ManagerKlientMysql ne = new ManagerKlientMysql();
 		ter = nu.get(wiz.getId_terap());
 		Klient kli = ne.get(wiz.getId_klient());
 		System.out.println("id kli: " + wiz.getId_klient());

@@ -14,7 +14,7 @@ public class Login {
 		super();
 		this.user = user;
 		this.passwd = passwd;
-		Connection_mysql cmp = new Connection_mysql();
+		ConnectionMysql cmp = new ConnectionMysql();
 		connection = cmp.connect;
 		stmt = cmp.stmt;
 		
@@ -29,7 +29,7 @@ public class Login {
 		
 	}
 
-	public boolean log_in() {
+	public boolean logIn() {
 		ResultSet r;
 		try {
 			log.setString(1, user);
@@ -53,7 +53,7 @@ public class Login {
 	User setUser(){
 		User us=null;
 		
-		boolean li = log_in();
+		boolean li = logIn();
 		if (li == true) {		
 			try {
 				log.setString(1, user);
@@ -65,7 +65,6 @@ public class Login {
 				}
 				
 			} catch (SQLException e) {
-				System.err.println("setUser bład");
 				e.printStackTrace();
 			}
 		}
@@ -74,7 +73,7 @@ public class Login {
 	Role setRole(){
 		Role role=new Role();
 		ResultSet r;
-		boolean li = log_in();
+		boolean li = logIn();
 		if (li == true) {
 			try {
 				ro.setString(1, user);

@@ -6,12 +6,12 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class Manager_Klient_Test {
-	Manager_Klient_mysql kli;
+public class ManagerKlientTest {
+	ManagerKlientMysql kli;
 	Klient klient;
 	
-	public Manager_Klient_Test() {
-		kli = new Manager_Klient_mysql();
+	public ManagerKlientTest() {
+		kli = new ManagerKlientMysql();
 		klient = new Klient("Janek", "Nowak","jan@nowak.pl", "888 000 999", 1);	
 		if (kli.getConnection() == null) {
 			System.out.println("Błąd połączenia!");	

@@ -2,7 +2,7 @@ package org.part_ter;
 
 import java.util.List;
 
-public interface Manager_db<TEntity> {
+public interface ManagerDb<TEntity> {
 
 	public TEntity get(int id);
 	

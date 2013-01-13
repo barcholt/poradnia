@@ -10,7 +10,6 @@ public class Terapeutka {
 	
 	public Terapeutka(int id, String imie, String nazwisko, String nr_tel,
 			String email, int id_umowy) {
-		super();
 		this.id = id;
 		this.imie = imie;
 		this.nazwisko = nazwisko;

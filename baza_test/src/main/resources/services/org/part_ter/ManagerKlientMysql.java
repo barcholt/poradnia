@@ -5,7 +5,7 @@ import java.util.List;
 import java.sql.*;
 
 
-public class Manager_Klient_mysql implements Manager_db<Klient> {
+public class ManagerKlientMysql implements ManagerDb<Klient> {
 
 	private Connection connection;
 	private Statement stmt; 
@@ -21,9 +21,9 @@ public class Manager_Klient_mysql implements Manager_db<Klient> {
 	
 
 	
-	public Manager_Klient_mysql() {
+	public ManagerKlientMysql() {
 		try {
-			Connection_mysql cmp = new Connection_mysql();
+			ConnectionMysql cmp = new ConnectionMysql();
 			connection = cmp.connect;
 			stmt = cmp.stmt;
 			getKli = connection.prepareStatement("" +
@@ -122,7 +122,6 @@ public class Manager_Klient_mysql implements Manager_db<Klient> {
 			saveKli.executeUpdate();
 			return true;
 		} catch (SQLException e) {
-			System.err.println(" Błąd w dodawaniu klienta do bazy");
 			e.printStackTrace();
 			return false;
 		}
@@ -138,7 +137,7 @@ public class Manager_Klient_mysql implements Manager_db<Klient> {
 			return result;
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.err.println("Błąd w pobieraniu id");
+
 			return 0;
 		}
 

@@ -5,17 +5,17 @@ import java.util.*;
 
 import org.junit.Test;
 
-public class Manager_Terapeutka_mysql implements Manager_db<Terapeutka> {
+public class ManagerTerapeutkaMysql implements ManagerDb<Terapeutka> {
 	
 	Connection connection;
 	Statement stmt;
 	PreparedStatement getTer;
 	PreparedStatement getAllTer;
 	
-	public Manager_Terapeutka_mysql() {
+	public ManagerTerapeutkaMysql() {
 		 
 		try {
-			Connection_mysql cmp = new Connection_mysql();
+			ConnectionMysql cmp = new ConnectionMysql();
 			connection = cmp.connect;
 			stmt = cmp.stmt;
 			

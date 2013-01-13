@@ -25,7 +25,7 @@ public class Login_test {
 
 	@Test
 	public void test() {
-		Boolean a = lo.log_in();
+		Boolean a = lo.logIn();
 		assertTrue(a);
 		us = lo.setUser();
 		assertEquals("Bartek", us.getImie());

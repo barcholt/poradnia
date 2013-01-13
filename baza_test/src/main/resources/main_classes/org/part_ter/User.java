@@ -7,7 +7,6 @@ private String nazwisko;
 private boolean enabled;
 
 public User(int id, String imie, String nazwisko, boolean enabled) {
-	super();
 	this.id = id;
 	this.imie = imie;
 	this.nazwisko = nazwisko;

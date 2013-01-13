@@ -23,9 +23,9 @@ import org.junit.Test;
 
 	
 
-public class Manager_Wizyta_Mysql_Test {
+public class ManagerWizytaMysqlTest {
 
-	Manager_Wizyta_mysql man;
+	ManagerWizytaMysql man;
 	Klient klient;
 	Terapeutka ter;
 	Wizyta wizyta;
@@ -49,7 +49,7 @@ public class Manager_Wizyta_Mysql_Test {
 		ld = new LocalDate();
 		ld2 = new LocalDate(2012, 12, 22);
 				
-		man = new Manager_Wizyta_mysql();
+		man = new ManagerWizytaMysql();
 		klient = new Klient(192, "Janek", "Nowak","jan@nowak.pl", "888 000 999", 1);
 		ter = new Terapeutka(2, "Kamila", "Bednarczuk", "298 099 009", "kamila@bednarczuk.pl",2);
 		wizyta = new Wizyta (3, 192, ld, "18:00", 1, 2, 100, "", 1);

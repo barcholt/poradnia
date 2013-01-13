@@ -22,7 +22,6 @@ public class Wizyta {
 	
 	public Wizyta(int id, int id_terap, int id_klient, LocalDate data, String godzina, int ktora,
 			float trwa, int oplata, String notka, int status) {
-		super();
 		this.id = id;
 		this.id_terap = id_terap;
 		this.id_klient = id_klient;
@@ -38,7 +37,6 @@ public class Wizyta {
 
 	public Wizyta(int id_terap, int id_klient, LocalDate data, String godzina, int ktora,
 			float trwa, int oplata, String notka, int status) {
-		super();
 		this.id_terap = id_terap;
 		this.id_klient = id_klient;
 		this.data = data;

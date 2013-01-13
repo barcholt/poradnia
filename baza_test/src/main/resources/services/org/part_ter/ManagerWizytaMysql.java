@@ -9,7 +9,7 @@ import org.joda.time.*;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
-public class Manager_Wizyta_mysql implements Manager_db<Wizyta>, Subject<Wizyta> {
+public class ManagerWizytaMysql implements ManagerDb<Wizyta>, Subject<Wizyta> {
 	private Connection connection;
 	private Statement stmt;
 	private PreparedStatement getWiz;
@@ -28,8 +28,8 @@ public class Manager_Wizyta_mysql implements Manager_db<Wizyta>, Subject<Wizyta>
 	private String zmiana;
 	private Wizyta wizyta_zmiana;
 	
-	public Manager_Wizyta_mysql() {
-		Connection_mysql cmp = new Connection_mysql();
+	public ManagerWizytaMysql() {
+		ConnectionMysql cmp = new ConnectionMysql();
 		connection = cmp.connect;
 		stmt = cmp.stmt;
 		observers = new ArrayList();
@@ -48,7 +48,6 @@ public class Manager_Wizyta_mysql implements Manager_db<Wizyta>, Subject<Wizyta>
 					"SELECT `id_wizyta` FROM `Poradnia_Wizyty` ORDER BY `id_wizyta` DESC Limit 1");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			System.err.println("Coś poszło źle 5!");
 		}
 	}
 	
@@ -73,7 +72,6 @@ public class Manager_Wizyta_mysql implements Manager_db<Wizyta>, Subject<Wizyta>
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
-			System.err.println("Coś poszło źle 4!");
 			return null;
 		}
 
@@ -97,7 +95,6 @@ public class Manager_Wizyta_mysql implements Manager_db<Wizyta>, Subject<Wizyta>
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
-			System.err.println("Coś poszło źle 3!");
 		}
 		return null;
 	}
@@ -120,7 +117,6 @@ public class Manager_Wizyta_mysql implements Manager_db<Wizyta>, Subject<Wizyta>
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
-			System.err.println("Coś poszło źle 2!");
 		}
 		
 		return null;
@@ -142,7 +138,6 @@ public class Manager_Wizyta_mysql implements Manager_db<Wizyta>, Subject<Wizyta>
 			return lista;
 		} 
 		catch (SQLException e) {
-			System.err.println("Coś poszło źle!");
 			e.printStackTrace();
 		}
 		
@@ -167,7 +162,6 @@ public class Manager_Wizyta_mysql implements Manager_db<Wizyta>, Subject<Wizyta>
 		} 
 		catch (SQLException e) {
 			e.printStackTrace();
-			System.err.println("Coś poszło bardzo źle!");
 		}
 			
 		return null;
@@ -209,7 +203,6 @@ public class Manager_Wizyta_mysql implements Manager_db<Wizyta>, Subject<Wizyta>
 	}
 	
 	public boolean save(Wizyta wiz, Terapeutka ter, Klient kli) {
-		System.out.println("Tworzę");
 		try {
 
 			insert.setInt(1, ter.getId());
@@ -284,7 +277,6 @@ public class Manager_Wizyta_mysql implements Manager_db<Wizyta>, Subject<Wizyta>
 	@Override
 	public boolean notifyObservers() {
 		for (int i=0; i<observers.size(); i++) {
-			System.out.println("powiadamiam");
 			ObserverClass ob = (ObserverClass)observers.get(i);
 			ob.notify(this.wizyta_zmiana, zmiana);
 		}

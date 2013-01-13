@@ -19,7 +19,7 @@ public class MailSentTest {
 	Klient klient;
 	Wizyta wizyta;
 	Wizyta wizyta2;
-	Manager_Wizyta_mysql man;
+	ManagerWizytaMysql man;
 	LocalDate ld;
 	
 	@BeforeClass
@@ -31,8 +31,8 @@ public class MailSentTest {
 		
 		ld = new LocalDate();
 				
-		man = new Manager_Wizyta_mysql();
-		Manager_Terapeutka_mysql meen = new Manager_Terapeutka_mysql();
+		man = new ManagerWizytaMysql();
+		ManagerTerapeutkaMysql meen = new ManagerTerapeutkaMysql();
 		
 		klient = new Klient(192, "Janek", "Nowak","jan@nowak.pl", "888 000 999", 1);
 		ter = meen.get(1); 

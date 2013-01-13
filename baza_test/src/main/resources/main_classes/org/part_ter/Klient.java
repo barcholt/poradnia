@@ -11,7 +11,7 @@ public class Klient {
 	
 	public Klient(int id, String imie, String nazwisko, String email, String nr_tel,
 			int id_terap) {
-		super();
+
 		this.id = id;
 		this.imie = imie;
 		this.nazwisko = nazwisko;
@@ -21,7 +21,6 @@ public class Klient {
 	}
 
 	public Klient(String imie, String nazwisko, String email, String nr_tel, int id_terap) {
-		super();
 		this.imie = imie;
 		this.nazwisko = nazwisko;
 		this.email = email;
