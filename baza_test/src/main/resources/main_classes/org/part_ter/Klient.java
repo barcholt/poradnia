@@ -11,15 +11,10 @@ public class Klient {
 	
 	public Klient(int id, String imie, String nazwisko, String email, String nr_tel,
 			int id_terap) {
-
-		this.id = id;
-		this.imie = imie;
-		this.nazwisko = nazwisko;
-		this.email = email;
-		this.nr_tel = nr_tel;
-		this.id_terap = id_terap;
-	}
-
+			this(imie, nazwisko, email, nr_tel, id_terap);
+			this.id = id;
+			}
+	
 	public Klient(String imie, String nazwisko, String email, String nr_tel, int id_terap) {
 		this.imie = imie;
 		this.nazwisko = nazwisko;

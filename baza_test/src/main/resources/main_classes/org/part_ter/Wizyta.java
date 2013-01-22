@@ -22,16 +22,8 @@ public class Wizyta {
 	
 	public Wizyta(int id, int id_terap, int id_klient, LocalDate data, String godzina, int ktora,
 			float trwa, int oplata, String notka, int status) {
+		this(id_terap, id_klient, data, godzina, ktora, trwa, status, notka, oplata);
 		this.id = id;
-		this.id_terap = id_terap;
-		this.id_klient = id_klient;
-		this.data = data;
-		this.godzina = godzina;
-		this.ktora = ktora;
-		this.trwa = trwa;
-		this.status = status;
-		this.oplata = oplata;
-		this.notka = notka;
 
 	}
 
