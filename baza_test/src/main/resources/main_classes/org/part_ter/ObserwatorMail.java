@@ -53,11 +53,8 @@ public class ObserwatorMail implements ObserverClass {
 	
 	@Override
 	public void notify(Wizyta wiz, String str) {
-		ManagerTerapeutkaMysql nu = new ManagerTerapeutkaMysql();
-		ManagerKlientMysql ne = new ManagerKlientMysql();
-		ter = nu.get(wiz.getId_terap());
-		Klient kli = ne.get(wiz.getId_klient());
-		System.out.println("id kli: " + wiz.getId_klient());
+		ter = wiz.getterap();
+		Klient kli = wiz.get_klient();
 		this.to = ter.getEmail();
 		this.body = str + wiz.getData() + ", " + wiz.getGodzina() + ", klient: " + kli.getImie() + " " + kli.getNazwisko();
 		System.out.println(body);

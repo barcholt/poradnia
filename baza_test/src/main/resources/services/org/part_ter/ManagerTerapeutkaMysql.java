@@ -13,12 +13,11 @@ public class ManagerTerapeutkaMysql implements ManagerDb<Terapeutka> {
 	PreparedStatement getAllTer;
 	
 	public ManagerTerapeutkaMysql() {
-		 
-		try {
-			ConnectionMysql cmp = new ConnectionMysql();
-			connection = cmp.connect;
-			stmt = cmp.stmt;
-			
+		ConnectionMysql cmp = new ConnectionMysql();
+		connection = cmp.connect;
+		stmt = cmp.stmt;
+		
+		try {		
 			getTer = connection.prepareStatement("" +
 					"SELECT * FROM `Poradnia_Terapeuci` WHERE `id_terap` =?");
 

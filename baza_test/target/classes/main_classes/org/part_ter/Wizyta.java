@@ -7,10 +7,9 @@ import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 
 public class Wizyta {
-
-	private int id;
-	private int id_terap;
-	private int id_klient;
+	private Klient klient;
+	private Terapeutka terapeutka;
+	private int id;																																																			
 	private LocalDate data;
 	private String godzina;
 	private int ktora;
@@ -19,18 +18,18 @@ public class Wizyta {
 	private int oplata;
 	private String notka;
 
-	
-	public Wizyta(int id, int id_terap, int id_klient, LocalDate data, String godzina, int ktora,
+	 
+	public Wizyta(int id, Terapeutka terap, Klient klient, LocalDate data, String godzina, int ktora,
 			float trwa, int oplata, String notka, int status) {
-		this(id_terap, id_klient, data, godzina, ktora, trwa, status, notka, oplata);
+		this(terap, klient, data, godzina, ktora, trwa, oplata, notka, status);
 		this.id = id;
 
 	}
 
-	public Wizyta(int id_terap, int id_klient, LocalDate data, String godzina, int ktora,
+	public Wizyta(Terapeutka terap, Klient klient, LocalDate data, String godzina, int ktora,
 			float trwa, int oplata, String notka, int status) {
-		this.id_terap = id_terap;
-		this.id_klient = id_klient;
+		this.terapeutka = terap;
+		this.klient = klient;
 		this.data = data;
 		this.godzina = godzina;
 		this.ktora = ktora;
@@ -52,21 +51,15 @@ public class Wizyta {
 		this.id = id;
 	}
 
-	public int getId_terap() {
-		return id_terap;
+	public Terapeutka getterap() {
+		return terapeutka ;
 	}
 
-	public void setId_terap(int id_terap) {
-		this.id_terap = id_terap;
+
+	public Klient get_klient() {
+		return klient;
 	}
 
-	public int getId_klient() {
-		return id_klient;
-	}
-
-	public void setId_klient(int id_klient) {
-		this.id_klient = id_klient;
-	}
 
 	public LocalDate getData() {
 		return data;
@@ -83,7 +76,6 @@ public class Wizyta {
 	public void setGodzina(String godzina) {
 		this.godzina = godzina;
 	}
-
 	
 	public int getKtora() {
 		return ktora;
@@ -128,7 +120,4 @@ public class Wizyta {
 	public Wizyta getWizyta() {
 		return this;
 	}
-
-	
-
 }

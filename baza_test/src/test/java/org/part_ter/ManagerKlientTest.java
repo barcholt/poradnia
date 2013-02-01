@@ -33,10 +33,19 @@ public class ManagerKlientTest {
 	public void changeKlienTest(){
 		kli.save(klient);
 		int id = kli.LastId();
-		System.out.println(id);
 		Klient klientZBazy = kli.get(id);
 		assertNotNull(klientZBazy);
 		assertEquals(klientZBazy.getEmail(), klient.getEmail());
 		kli.delete(id);
 	}
+	@Test
+	public void getKlientTest() {
+		klient = kli.get(192);
+		assertEquals(192, klient.getId());
+		assertEquals("Nowak", klient.getNazwisko());
+		assertEquals("Janek", klient.getImie());
+		assertEquals("888000999", klient.getNr_tel());
+		assertEquals("jan@nowak.pl", klient.getEmail());
+	}
 }
+

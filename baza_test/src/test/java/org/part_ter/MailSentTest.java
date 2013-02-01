@@ -21,36 +21,39 @@ public class MailSentTest {
 	Wizyta wizyta2;
 	ManagerWizytaMysql man;
 	LocalDate ld;
+	ManagerTerapeutkaMysql meen;
+	ObserverClass obs;
+
 	
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+	
+	public MailSentTest()  {
+		ld = new LocalDate();
+		
+		man = new ManagerWizytaMysql();
+		meen = new ManagerTerapeutkaMysql();
+		
+		klient = new Klient(192, "Janek", "Nowak","jan@nowak.pl", "888 000 999", 1);
+		ter = meen.get(2); 
+		wizyta = new Wizyta (ter, klient, ld, "18:00", 1, 2, 100, "", 1);
+		wizyta2 = new Wizyta (ter, klient, ld, "19:00", 1, 2, 100, "", 1);
+
+		if (man.getConnection() == null) {
+			System.out.println("Błąd połączenia!");	
+		}
+		obs = new ObserwatorMail(man);
+
 	}
 
 	@Before
 	public void setUp() throws Exception {
 		
-		ld = new LocalDate();
-				
-		man = new ManagerWizytaMysql();
-		ManagerTerapeutkaMysql meen = new ManagerTerapeutkaMysql();
-		
-		klient = new Klient(192, "Janek", "Nowak","jan@nowak.pl", "888 000 999", 1);
-		ter = meen.get(1); 
-		wizyta = new Wizyta (1, 192, ld, "18:00", 1, 2, 100, "", 1);
-		wizyta2 = new Wizyta (1, 192, ld, "19:00", 1, 2, 100, "", 1);
-
-		if (man.getConnection() == null) {
-			System.out.println("Błąd połączenia!");	
 		}
-		ObserverClass obs = new ObserwatorMail(man);
-	}
-		
-	
 
 	@Test 
 	public void test() {
-		man.change(10452, wizyta2, ter, klient);
-		man.save(wizyta, ter, klient );
+		System.out.println(ter.getNazwisko());
+		man.change(10452, wizyta2);
+		man.save(wizyta);
 		man.delete(man.get(man.GetLastId()));
 	}
 
